@@ -88,8 +88,8 @@ def synthesize_rag_answer(prompt: str) -> str:
     api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
     if api_key:
         try:
-            from google import genai
-            client = genai.Client(api_key=api_key)
+            genai_mod = __import__("google.genai", fromlist=["genai"])
+            client = genai_mod.Client(api_key=api_key)
             response = client.models.generate_content(model="gemini-2.5-flash", contents=prompt)
             if response.text:
                 return response.text.strip()
@@ -99,8 +99,8 @@ def synthesize_rag_answer(prompt: str) -> str:
     openai_key = os.getenv("OPENAI_API_KEY")
     if openai_key:
         try:
-            from openai import OpenAI
-            client = OpenAI(api_key=openai_key)
+            openai_mod = __import__("openai")
+            client = openai_mod.OpenAI(api_key=openai_key)
             res = client.chat.completions.create(
                 model="gpt-4o-mini",
                 messages=[{"role": "user", "content": prompt}]
