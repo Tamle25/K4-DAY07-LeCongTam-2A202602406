@@ -4,9 +4,18 @@ import os
 import re
 import sys
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv(dotenv_path=Path(".env"), override=False)
 
 # Ensure src is in python path
 sys.path.insert(0, str(Path(__file__).parent))
+
+if sys.platform == "win32":
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
+    if hasattr(sys.stderr, "reconfigure"):
+        sys.stderr.reconfigure(encoding="utf-8")
 
 from src.agent import KnowledgeBaseAgent
 from src.chunking import RecursiveChunker
@@ -87,14 +96,15 @@ def synthesize_rag_answer(prompt: str) -> str:
     """Hàm tổng hợp câu trả lời RAG dựa trên ngữ cảnh đã truy xuất và câu hỏi."""
     api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
     if api_key:
-        try:
-            genai_mod = __import__("google.genai", fromlist=["genai"])
-            client = genai_mod.Client(api_key=api_key)
-            response = client.models.generate_content(model="gemini-2.5-flash", contents=prompt)
-            if response.text:
-                return response.text.strip()
-        except Exception:
-            pass
+        genai_mod = __import__("google.genai", fromlist=["genai"])
+        client = genai_mod.Client(api_key=api_key)
+        for model_name in ["gemini-flash-latest", "gemini-3.6-flash", "gemini-3.5-flash-lite", "gemini-2.5-flash"]:
+            try:
+                response = client.models.generate_content(model=model_name, contents=prompt)
+                if response.text:
+                    return response.text.strip()
+            except Exception:
+                continue
 
     openai_key = os.getenv("OPENAI_API_KEY")
     if openai_key:

@@ -16,10 +16,7 @@ Gold Answer: Được đổi mới miễn phí trong 30 ngày đầu tại TGDĐ
     Top-3 [Score: 0.2797 | Doc: doi-tra-bao-hanh-lazada-buyer | ID: doi-tra-bao-hanh-lazada-buyer#0]: # Hướng dẫn và quy trình bảo hành sản phẩm trên Lazada dành cho Người Mua  ## 1. Điều kiện bảo hành ...
   -> Đánh giá điểm truy xuất: 2/2 điểm (Target Docs: ['doi-tra-bao-hanh-cellphones-buyer', 'doi-tra-bao-hanh-tgdd-buyer', 'doi-tra-bao-hanh-lazada-buyer'])
   => Agent Output:
-Căn cứ theo tài liệu trích dẫn:
-   [1] (doi-tra-bao-hanh-lazada-buyer): ### 1.2) Không được bảo hành hoặc bị tính phí khi:
-   [2] (doi-tra-bao-hanh-vinfast-buyer): 7. Chi tiết hao mòn tự nhiên theo thời gian: Má phanh, đĩa phanh, lốp xe, cầu chì, bộ xích, đĩa xích, ổ bi, dung dịch bôi trơn định kỳ.
-   [3] (doi-tra-bao-hanh-lazada-buyer): # Hướng dẫn và quy trình bảo hành sản phẩm trên Lazada dành cho Người Mua
+Dựa vào thông tin ngữ cảnh được cung cấp, không có thông tin về số ngày quy định thời hạn yêu cầu đổi trả hoặc hoàn tiền dành cho người mua.
 
 ----------------------------------------------------------------
 Query #2: Thời hạn Người bán phải phản hồi và gửi khiếu nại Trả hàng/Hoàn tiền là bao nhiêu lâu?
@@ -35,10 +32,7 @@ Gold Answer: Người bán có thời hạn 2 ngày (Shopee) hoặc 48 giờ (La
     Top-3 [Score: 0.2392 | Doc: doi-tra-bao-hanh-vinfast-buyer | ID: doi-tra-bao-hanh-vinfast-buyer#8]: 7. Chi tiết hao mòn tự nhiên theo thời gian: Má phanh, đĩa phanh, lốp xe, cầu chì, bộ xích, đĩa xích...
   -> Đánh giá điểm truy xuất: 2/2 điểm (Target Docs: ['doi-tra-bao-hanh-shopee-seller', 'doi-tra-bao-hanh-lazada-seller', 'doi-tra-bao-hanh-tiki-seller'])
   => Agent Output:
-Căn cứ theo tài liệu trích dẫn:
-   [1] (doi-tra-bao-hanh-shopee-seller): ## D. Chính sách bảo vệ Người Bán và Xử lý Gian lận
-   [2] (doi-tra-bao-hanh-shopee-seller): # Quy định giải quyết khiếu nại Trả hàng và Hoàn tiền dành cho Người Bán trên Shopee
-   [3] (doi-tra-bao-hanh-tiki-seller): - **Đồng ý Đổi mới**: Tiki tạo đơn đổi trả mới, Nhà Bán tiến hành chuẩn bị và giao hàng mới.
+Theo thông tin được cung cấp, đối với quyết định Hoàn tiền ngay trên Shopee, thời hạn để Người bán (Shop) gửi khiếu nại là trong vòng **2 ngày** (bao gồm thứ 7 và Chủ nhật, trừ ngày nghỉ lễ theo thông báo của Shopee) [2].
 
 ----------------------------------------------------------------
 Query #3: Thời hạn bảo hành xe máy điện và Pin LFP VinFast là bao nhiêu năm?
@@ -50,10 +44,7 @@ Gold Answer: Bảo hành xe là 6 năm/không giới hạn km; thời hạn bả
     Top-3 [Score: 0.2267 | Doc: doi-tra-bao-hanh-samsung-buyer | ID: doi-tra-bao-hanh-samsung-buyer#0]: # Chính sách bảo hành sản phẩm chính hãng Samsung dành cho Khách hàng  ## 1. Điều kiện áp dụng bảo hành Sản phẩm mang nh...
   -> Đánh giá điểm truy xuất: 0/2 điểm (Target Docs: ['doi-tra-bao-hanh-vinfast-buyer'])
   => Agent Output:
-Căn cứ theo tài liệu trích dẫn:
-   [1] (doi-tra-bao-hanh-sunhouse-buyer): - **Sản phẩm bàn chải điện / tăm nước**: Đổi mới trong 1 - 12 tháng nếu có lỗi kỹ thuật từ nhà sản xuất.
-   [2] (doi-tra-bao-hanh-lazada-seller): # Quy trình xử lý đơn hàng và khiếu nại Trả hàng/Hoàn tiền dành cho Nhà Bán Hàng - Lazada
-   [3] (doi-tra-bao-hanh-samsung-buyer): # Chính sách bảo hành sản phẩm chính hãng Samsung dành cho Khách hàng
+Thông tin được cung cấp trong ngữ cảnh không có nội dung về thời hạn bảo hành xe máy điện và Pin LFP VinFast.
 
 ----------------------------------------------------------------
 Query #4: Các trường hợp nào thiết bị di động bị từ chối bảo hành hoặc bị trừ phí khi đổi trả?
@@ -65,10 +56,19 @@ Gold Answer: Từ chối khi tự ý tháo mở sửa chữa, rơi vỡ ngập n
     Top-3 [Score: 0.2388 | Doc: doi-tra-bao-hanh-sunhouse-buyer | ID: doi-tra-bao-hanh-sunhouse-buyer#6]: - **Sản phẩm bàn chải điện / tăm nước**: Đổi mới trong 1 - 12 tháng nếu có lỗi kỹ thuật từ nhà sản xuất.  ---  ## 4. Phư...
   -> Đánh giá điểm truy xuất: 2/2 điểm (Target Docs: ['doi-tra-bao-hanh-tgdd-buyer', 'doi-tra-bao-hanh-cellphones-buyer'])
   => Agent Output:
-Căn cứ theo tài liệu trích dẫn:
-   [1] (doi-tra-bao-hanh-tgdd-buyer): - Nếu TGDĐ vi phạm cam kết (bảo hành quá 15 ngày hoặc phải bảo hành lại lần 2 trong 30 ngày), Khách hàng được áp dụng chính sách "Hư gì đổi nấy" ngay lập tức hoặc Hoàn tiền với mức phí giảm 50%.
-   [2] (doi-tra-bao-hanh-cellphones-buyer): | **Smartwatch khác** (trừ Apple & Samsung) | **15 ngày** | - Trong 15 ngày đầu: Trừ phí 30% trên giá hiện tại.<br>- Sau 15 ngày: Nhập lại theo thỏa thuận. |
-   [3] (doi-tra-bao-hanh-sunhouse-buyer): - **Sản phẩm bàn chải điện / tăm nước**: Đổi mới trong 1 - 12 tháng nếu có lỗi kỹ thuật từ nhà sản xuất.
+Dựa vào ngữ cảnh được cung cấp, **không có thông tin** quy định về các trường hợp "thiết bị di động bị từ chối bảo hành". 
+
+Đối với các trường hợp bị trừ phí khi đổi trả hoặc không áp dụng bảo hành cam kết, ngữ cảnh chỉ cung cấp các quy định sau:
+
+**1. Về phí đổi trả / hoàn tiền:**
+*   **Tại TGDĐ**: Khách hàng được hoàn tiền với mức phí giảm 50% nếu TGDĐ vi phạm cam kết bảo hành (bảo hành quá 15 ngày hoặc phải bảo hành lại lần 2 trong 30 ngày) [1].
+*   **Tại CellphoneS**:
+    *   **Smartwatch khác (trừ Apple & Samsung)**: Trong 15 ngày đầu bị trừ phí 30% trên giá hiện tại (sau 15 ngày nhập lại theo thỏa thuận) [2].
+    *   **Laptop**: Trong 30 ngày đầu bị trừ phí 20% trên giá hiện tại (sau 30 ngày nhập lại theo thỏa thuận) [2].
+    *   **Màn hình máy tính rời**: Trong 15 ngày đầu bị trừ phí 20% trên giá hiện tại (sau 15 ngày nhập lại theo thỏa thuận) [2].
+
+**2. Về trường hợp không áp dụng bảo hành cam kết:**
+*   **Tại TGDĐ**: Từ tháng thứ 13 trở đi sẽ không áp dụng bảo hành cam kết, mà chỉ áp dụng bảo hành chính hãng [1].
 
 ----------------------------------------------------------------
 Query #5: Người bán cần chuẩn bị những bằng chứng gì khi khiếu nại đơn hàng bị trả về không nguyên vẹn?
@@ -84,10 +84,7 @@ Gold Answer: Video mở kiện hàng có sự hiện diện của shipper, quay 
     Top-3 [Score: 0.1545 | Doc: doi-tra-bao-hanh-lazada-buyer | ID: doi-tra-bao-hanh-lazada-buyer#2]: ## 2. Các hình thức bảo hành trên Lazada - **Bảo hành bằng Hóa đơn mua hàng**: Áp dụng hóa đơn/biên ...
   -> Đánh giá điểm truy xuất: 2/2 điểm (Target Docs: ['doi-tra-bao-hanh-shopee-seller', 'doi-tra-bao-hanh-lazada-seller', 'doi-tra-bao-hanh-tiki-seller'])
   => Agent Output:
-Căn cứ theo tài liệu trích dẫn:
-   [1] (doi-tra-bao-hanh-lazada-seller): ## 1. Quản lý trạng thái đơn hàng trên Lazada Seller Center
-   [2] (doi-tra-bao-hanh-tiki-seller): ## 2. Quy trình 4 bước xử lý khiếu nại Đổi trả/Bảo hành
-   [3] (doi-tra-bao-hanh-shopee-seller): ## D. Chính sách bảo vệ Người Bán và Xử lý Gian lận
+Dựa vào thông tin ngữ cảnh được cung cấp, không có thông tin chi tiết về việc người bán cần chuẩn bị những bằng chứng gì khi khiếu nại đơn hàng bị trả về không nguyên vẹn.
 
 ================================================================
 TỔNG ĐIỂM BENCHMARK RETRIEVAL: 8/10 điểm

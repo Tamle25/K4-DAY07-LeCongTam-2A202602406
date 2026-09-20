@@ -1,6 +1,6 @@
 # Báo Cáo Nhóm — Lab 7: Embedding & Vector Store
 
-**Nhóm:** G16 (Biến thể K4-L3B)
+**Nhóm:** G99
 **Thành viên:** Nguyễn Thị Thùy Dương, Lê Công Tâm, Nguyễn Thành Tiến
 **Ngày:** 20-09-2026
 
@@ -17,7 +17,7 @@
 **Chủ đề:** Chính sách Đổi trả và Bảo hành Thương mại Điện tử (Shopee, Lazada, Thế Giới Di Động, CellphoneS, VinFast)
 
 **Tại sao nhóm chọn chủ đề này?**
-> Nhóm chọn chủ đề chính sách đổi trả và bảo hành thương mại điện tử vì đây là lĩnh vực thực tế cao, quy định phức tạp và có sự phân biệt rõ ràng giữa quyền lợi người mua (`buyer`) và nghĩa vụ nhà bán hàng (`seller`). Tập dữ liệu này rất thích hợp để chứng minh hiệu quả của mô hình RAG kết hợp lọc siêu dữ liệu (metadata filtering).
+> Nhóm chọn chủ đề chính sách đổi trả và bảo hành thương mại điện tử vì đây là lĩnh vực thực tế cao, quy định phức tạp và có sự phân biệt rõ ràng giữa quyền lợi người mua (`buyer`) và nghĩa vụ nhà bán hàng (`seller`). Tập dữ liệu này rấat thích hợp để chứng minh hiệu quả của mô hình RAG kết hợp lọc siêu dữ liệu (metadata filtering).
 
 ### Danh sách tài liệu (Data Inventory)
 
@@ -94,7 +94,7 @@ class HeadingChunker:
 | Thành viên | Chiến lược (Strategy) | Điểm truy xuất (/10) | Điểm mạnh | Điểm yếu |
 |-----------|----------|----------------------|-----------|----------|
 | Thùy Dương | `FixedSizeChunker` | 7/10 | Độ dài chunk ổn định, thời gian xử lý nhanh | Ngữ cảnh bị ngắt quãng ở điểm cắt |
-| Lê Công Tâm | `RecursiveChunker` | 9/10 | Mạch lạc ngữ nghĩa, thích ứng tốt với cấu trúc đoạn văn | Có thể biến động độ dài chunk |
+| Lê Công Tâm | `RecursiveChunker` | 8/10 | Mạch lạc ngữ nghĩa, thích ứng tốt với cấu trúc đoạn văn | Có thể biến động độ dài chunk |
 | Thành Tiến | `HeadingChunker` | 10/10 | Giữ 100% ngữ cảnh tiêu đề và phạm vi điều khoản | Chunk có thể hơi lớn nếu tiêu đề dài |
 
 **Chiến lược nào tốt nhất cho chủ đề này? Tại sao?**
