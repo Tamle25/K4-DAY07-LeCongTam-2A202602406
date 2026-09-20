@@ -17,7 +17,7 @@
 **Chủ đề:** Chính sách Đổi trả và Bảo hành Thương mại Điện tử (Shopee, Lazada, Thế Giới Di Động, CellphoneS, VinFast)
 
 **Tại sao nhóm chọn chủ đề này?**
-> Nhóm chọn chủ đề chính sách đổi trả và bảo hành thương mại điện tử vì đây là lĩnh vực thực tế cao, quy định phức tạp và có sự phân biệt rõ ràng giữa quyền lợi người mua (`buyer`) và nghĩa vụ nhà bán hàng (`seller`). Tập dữ liệu này rấat thích hợp để chứng minh hiệu quả của mô hình RAG kết hợp lọc siêu dữ liệu (metadata filtering).
+> Nhóm chọn chủ đề chính sách đổi trả và bảo hành thương mại điện tử vì đây là lĩnh vực thực tế cao, quy định phức tạp và có sự phân biệt rõ ràng giữa quyền lợi người mua (`buyer`) và nghĩa vụ nhà bán hàng (`seller`). Tập dữ liệu này rất thích hợp để chứng minh hiệu quả của mô hình RAG kết hợp lọc siêu dữ liệu (metadata filtering).
 
 ### Danh sách tài liệu (Data Inventory)
 
@@ -63,14 +63,61 @@ Chạy `ChunkingStrategyComparator().compare()` trên các tài liệu:
 ### Chiến lược của từng thành viên
 
 **Thành viên 1 — Nguyễn Thị Thùy Dương**
+
 - **Loại chiến lược:** FixedSizeChunker (`chunk_size=500`, `overlap=50`)
-- **Mô tả & lý do chọn:** Đơn giản, độ dài chunk đồng đều. Phù hợp cho việc kiểm thử baseline nhưng dễ cắt rách giữa các câu quy định.
+- **Mô tả & lý do chọn:** Đây là baseline cố định theo số ký tự, dễ kiểm soát số lượng và kích thước chunk. `overlap=50` giúp giữ lại một phần ngữ cảnh ở ranh giới giữa hai chunk, nhưng chiến lược này vẫn có thể cắt ngang câu hoặc bảng chính sách.
+
+#### Kết quả benchmark FixedSizeChunker (Thành viên 1 - Nguyễn Thị Thùy Dương)
+
+| # | Câu hỏi | Expected doc in top-3? | Keyword hits | Ghi chú |
+|---|---------|------------------------|--------------|---------|
+| 1 | Thời hạn đổi trả/hoàn tiền người mua | YES (lazada-buyer) | 30 ngày | Filter audience: buyer; chunk có keyword ở rank 2 |
+| 2 | Thời hạn phản hồi khiếu nại người bán | YES (lazada-seller, tiki-seller) | 48 giờ, khiếu nại | Filter audience: seller; top-3 đều là tài liệu seller |
+| 3 | Thời hạn bảo hành VinFast | YES (vinfast-buyer) | Không thấy trong preview | Đúng tài liệu ở rank 3 nhưng preview không chứa trực tiếp 6 năm, 8 năm |
+| 4 | Từ chối bảo hành/trừ phí mobile | NO | Không có | Top-3 lệch sang Lazada/Shopee, không lấy được TGDD/CellphoneS |
+| 5 | Bằng chứng khiếu nại người bán | YES (lazada-seller, tiki-seller) | video, 6 mặt | Chunk chứa bằng chứng nằm ở rank 2 |
+
+**Quan sát metadata filter trong lần chạy `bench.py` với FixedSizeChunker:**
+
+| Query | Filter trong `bench.py` | Top-3 sau filter | Filter có giúp? |
+|-------|------------------------|------------------|-----------------|
+| 1 | `audience=buyer` | shopee-buyer, lazada-buyer, shopee-buyer | Có — không có seller doc chen vào top-3 |
+| 2 | `audience=seller` | lazada-seller, tiki-seller, lazada-seller | Có — chỉ còn tài liệu seller |
+| 5 | `audience=seller` | lazada-seller, lazada-seller, tiki-seller | Có — chỉ còn tài liệu seller và chunk chứa video, 6 mặt nằm ở rank 2 |
+
+**Tổng kết FixedSizeChunker:** 4/5 câu hỏi có expected doc trong Top-3. Metadata filter audience hoạt động đúng ở 3 câu có filter (Q1, Q2, Q5). Câu 4 thất bại vì top-3 không lấy được tài liệu TGDD/CellphoneS chứa điều kiện từ chối bảo hành hoặc mức trừ phí; đây là hạn chế của việc dùng `_mock_embed` và cắt fixed-size làm mất ranh giới điều khoản.
+
+---
 
 **Thành viên 2 — Lê Công Tâm**
-- **Loại chiến lược:** RecursiveChunker (`chunk_size=500`, separators=["\n\n", "\n", ". ", " ", ""])
+
+- **Loại chiến lược:** RecursiveChunker (`chunk_size=500`, `separators=["\n\n", "\n", ". ", " ", ""]`)
 - **Mô tả & lý do chọn:** Thử nghiệm cắt đệ quy theo các phân cách từ lớn đến nhỏ (`\n\n` -> `\n` -> `. `). Giúp giữ trọn vẹn khối ý nghĩa của điều khoản quy định và tự động gom mảnh nhỏ sát ngưỡng `chunk_size`.
 
+#### Kết quả benchmark RecursiveChunker (Thành viên 2 - Lê Công Tâm)
+
+| # | Câu hỏi | Expected doc in top-3? | Keyword hits | Ghi chú |
+|---|---------|------------------------|--------------|---------|
+| 1 | Thời hạn đổi trả/hoàn tiền người mua | YES (lazada-buyer) | 30 ngày, đổi mới | Filter audience: buyer; top-1 & top-3 là tài liệu buyer |
+| 2 | Thời hạn phản hồi khiếu nại người bán | YES (shopee-seller, tiki-seller) | 2 ngày, khiếu nại | Filter audience: seller; top-3 đều là tài liệu seller |
+| 3 | Thời hạn bảo hành VinFast | NO | Không có | Top-3 lệch sang Sunhouse/Lazada/Samsung do nhiễu MockEmbedder |
+| 4 | Từ chối bảo hành/trừ phí mobile | YES (tgdd-buyer, cellphones-buyer) | 15 ngày, 30 ngày, trừ phí 20%, 30% | Top-1 là TGDD, Top-2 là CellphoneS chứa chi tiết tỷ lệ trừ phí |
+| 5 | Bằng chứng khiếu nại người bán | YES (lazada-seller, tiki-seller, shopee-seller) | đơn hàng, khiếu nại | Filter audience: seller; top-3 thuộc 100% tài liệu nhà bán hàng |
+
+**Quan sát metadata filter trong lần chạy `bench.py` với RecursiveChunker:**
+
+| Query | Filter trong `bench.py` | Top-3 sau filter | Filter có giúp? |
+|-------|------------------------|------------------|-----------------|
+| 1 | `audience=buyer` | lazada-buyer, vinfast-buyer, lazada-buyer | Có — không có seller doc chen vào top-3 |
+| 2 | `audience=seller` | shopee-seller, shopee-seller, tiki-seller | Có — loại bỏ cellphones-buyer (vốn chiếm rank 1 khi không filter) |
+| 5 | `audience=seller` | lazada-seller, tiki-seller, shopee-seller | Có — loại bỏ 100% tài liệu buyer (cellphones-buyer, lazada-buyer) |
+
+**Tổng kết RecursiveChunker:** 4/5 câu hỏi có expected doc trong Top-3. Metadata filter audience hoạt động hiệu quả ở cả 3 câu có filter (Q1, Q2, Q5), đặc biệt ở Q2 và Q5 khi ngăn chặn hoàn toàn tài liệu người mua chen vào top-3. Q3 chưa lấy được VinFast do hạn chế của MockEmbedder băm MD5 số ngẫu nhiên.
+
+---
+
 **Thành viên 3 — Nguyễn Thành Tiến**
+
 - **Loại chiến lược:** HeadingChunker (Custom split theo tiêu đề `##`, `###`)
 - **Mô tả & lý do chọn:** Văn bản chính sách được biên soạn theo từng Điều/Mục. Tách trước theo thẻ heading `##` giúp mỗi chunk là một điều khoản trọn vẹn. Nếu section quá dài thì đệ quy hạ xuống cắt theo câu.
 - **Code snippet (custom):**
@@ -88,6 +135,26 @@ class HeadingChunker:
                 chunks.extend(RecursiveChunker(chunk_size=500).chunk(sec_str))
         return chunks
 ```
+
+#### Kết quả benchmark HeadingChunker (Thành viên 3 - Nguyễn Thành Tiến)
+
+| # | Câu hỏi | Expected doc in top-3? | Keyword hits | Ghi chú |
+|---|---------|------------------------|--------------|---------|
+| 1 | Thời hạn đổi trả/hoàn tiền người mua | YES (cellphones-buyer, tgdd-buyer) | 30 ngày, đổi mới | Filter audience: buyer; chunk theo tiêu đề giữ trọn điều khoản 30 ngày |
+| 2 | Thời hạn phản hồi khiếu nại người bán | YES (shopee-seller, lazada-seller) | 2 ngày, 48 giờ, khiếu nại | Filter audience: seller; giữ trọn 2 ngày (Shopee) / 48 giờ (Lazada) |
+| 3 | Thời hạn bảo hành VinFast | YES (vinfast-buyer) | 6 năm, 8 năm, Pin LFP | Chunk tiêu đề giữ nguyên bảng bảo hành 6 năm xe & 8 năm pin LFP |
+| 4 | Từ chối bảo hành/trừ phí mobile | YES (tgdd-buyer, cellphones-buyer) | rơi vỡ, tháo máy, trừ phí | Giữ trọn danh sách các điều kiện từ chối bảo hành và mức trừ phí |
+| 5 | Bằng chứng khiếu nại người bán | YES (shopee-seller, lazada-seller) | video, 6 mặt, shipper | Filter audience: seller; trích trọn vẹn điều khoản bằng chứng video 6 mặt |
+
+**Quan sát metadata filter trong lần chạy `bench.py` với HeadingChunker:**
+
+| Query | Filter trong `bench.py` | Top-3 sau filter | Filter có giúp? |
+|-------|------------------------|------------------|-----------------|
+| 1 | `audience=buyer` | cellphones-buyer, tgdd-buyer, lazada-buyer | Có — lọc sạch tài liệu seller |
+| 2 | `audience=seller` | shopee-seller, lazada-seller, tiki-seller | Có — loại bỏ hoàn toàn nhiễu từ phía khách hàng |
+| 5 | `audience=seller` | shopee-seller, lazada-seller, tiki-seller | Có — bảo đảm 100% top-3 là tài liệu dành cho nhà bán hàng |
+
+**Tổng kết HeadingChunker:** 5/5 câu hỏi có expected doc trong Top-3 (đạt 10/10 điểm retrieval). Việc chia nhỏ theo tiêu đề `##`, `###` giúp giữ nguyên vẹn 100% ranh giới điều khoản và ngữ cảnh. Metadata filter loại bỏ triệt để nhiễu chéo giữa tài liệu người mua và người bán.
 
 ### So Sánh Giữa Các Thành Viên
 
