@@ -1,0 +1,94 @@
+BENCHMARK RESULTS REPORT - LE CONG TAM (G16)
+Data Source: data\ChinhSachDoiTraBaoHanh (10 files, 71 chunks)
+Strategy: RecursiveChunker (chunk_size=500)
+
+----------------------------------------------------------------
+Query #1: Thời hạn yêu cầu đổi trả hoặc hoàn tiền dành cho người mua là bao nhiêu ngày?
+Filter: {'audience': 'buyer'}
+Gold Answer: Được đổi mới miễn phí trong 30 ngày đầu tại TGDĐ/CellphoneS nếu lỗi kỹ thuật NSX.
+  [TRUY XUẤT CÓ FILTER]:
+    Top-1 [Score: 0.3546 | Doc: doi-tra-bao-hanh-lazada-buyer | ID: doi-tra-bao-hanh-lazada-buyer#1]: ### 1.2) Không được bảo hành hoặc bị tính phí khi: - Không đáp ứng các điều kiện bảo hành miễn phí. - Thông tin sản phẩm...
+    Top-2 [Score: 0.3374 | Doc: doi-tra-bao-hanh-vinfast-buyer | ID: doi-tra-bao-hanh-vinfast-buyer#8]: 7. Chi tiết hao mòn tự nhiên theo thời gian: Má phanh, đĩa phanh, lốp xe, cầu chì, bộ xích, đĩa xích, ổ bi, dung dịch bô...
+    Top-3 [Score: 0.2797 | Doc: doi-tra-bao-hanh-lazada-buyer | ID: doi-tra-bao-hanh-lazada-buyer#0]: # Hướng dẫn và quy trình bảo hành sản phẩm trên Lazada dành cho Người Mua  ## 1. Điều kiện bảo hành sản phẩm trên Lazada...
+  [SO SÁNH A/B - TRUY XUẤT KHÔNG FILTER]:
+    Top-1 [Score: 0.3546 | Doc: doi-tra-bao-hanh-lazada-buyer | ID: doi-tra-bao-hanh-lazada-buyer#1]: ### 1.2) Không được bảo hành hoặc bị tính phí khi: - Không đáp ứng các điều kiện bảo hành miễn phí. ...
+    Top-2 [Score: 0.3374 | Doc: doi-tra-bao-hanh-vinfast-buyer | ID: doi-tra-bao-hanh-vinfast-buyer#8]: 7. Chi tiết hao mòn tự nhiên theo thời gian: Má phanh, đĩa phanh, lốp xe, cầu chì, bộ xích, đĩa xích...
+    Top-3 [Score: 0.2797 | Doc: doi-tra-bao-hanh-lazada-buyer | ID: doi-tra-bao-hanh-lazada-buyer#0]: # Hướng dẫn và quy trình bảo hành sản phẩm trên Lazada dành cho Người Mua  ## 1. Điều kiện bảo hành ...
+  -> Đánh giá điểm truy xuất: 2/2 điểm (Target Docs: ['doi-tra-bao-hanh-cellphones-buyer', 'doi-tra-bao-hanh-tgdd-buyer', 'doi-tra-bao-hanh-lazada-buyer'])
+  => Agent Output:
+Căn cứ theo tài liệu trích dẫn:
+   [1] (doi-tra-bao-hanh-lazada-buyer): ### 1.2) Không được bảo hành hoặc bị tính phí khi:
+   [2] (doi-tra-bao-hanh-vinfast-buyer): 7. Chi tiết hao mòn tự nhiên theo thời gian: Má phanh, đĩa phanh, lốp xe, cầu chì, bộ xích, đĩa xích, ổ bi, dung dịch bôi trơn định kỳ.
+   [3] (doi-tra-bao-hanh-lazada-buyer): # Hướng dẫn và quy trình bảo hành sản phẩm trên Lazada dành cho Người Mua
+
+----------------------------------------------------------------
+Query #2: Thời hạn Người bán phải phản hồi và gửi khiếu nại Trả hàng/Hoàn tiền là bao nhiêu lâu?
+Filter: {'audience': 'seller'}
+Gold Answer: Người bán có thời hạn 2 ngày (Shopee) hoặc 48 giờ (Lazada) để xử lý và gửi khiếu nại.
+  [TRUY XUẤT CÓ FILTER]:
+    Top-1 [Score: 0.2651 | Doc: doi-tra-bao-hanh-shopee-seller | ID: doi-tra-bao-hanh-shopee-seller#5]: ## D. Chính sách bảo vệ Người Bán và Xử lý Gian lận  ### 1. Cơ chế bảo vệ Người Bán - Tất cả các yêu cầu Trả hàng/Hoàn t...
+    Top-2 [Score: 0.2252 | Doc: doi-tra-bao-hanh-shopee-seller | ID: doi-tra-bao-hanh-shopee-seller#0]: # Quy định giải quyết khiếu nại Trả hàng và Hoàn tiền dành cho Người Bán trên Shopee  ## A. Quy trình xử lý Hoàn tiền ng...
+    Top-3 [Score: 0.1659 | Doc: doi-tra-bao-hanh-tiki-seller | ID: doi-tra-bao-hanh-tiki-seller#4]:    - **Đồng ý Đổi mới**: Tiki tạo đơn đổi trả mới, Nhà Bán tiến hành chuẩn bị và giao hàng mới.    - **Khiếu nại / Đề xu...
+  [SO SÁNH A/B - TRUY XUẤT KHÔNG FILTER]:
+    Top-1 [Score: 0.2931 | Doc: doi-tra-bao-hanh-cellphones-buyer | ID: doi-tra-bao-hanh-cellphones-buyer#6]: 4. **Tài khoản cá nhân**: Khách hàng phải đăng xuất toàn bộ tài khoản bảo mật (iCloud, Google Accoun...
+    Top-2 [Score: 0.2651 | Doc: doi-tra-bao-hanh-shopee-seller | ID: doi-tra-bao-hanh-shopee-seller#5]: ## D. Chính sách bảo vệ Người Bán và Xử lý Gian lận  ### 1. Cơ chế bảo vệ Người Bán - Tất cả các yêu...
+    Top-3 [Score: 0.2392 | Doc: doi-tra-bao-hanh-vinfast-buyer | ID: doi-tra-bao-hanh-vinfast-buyer#8]: 7. Chi tiết hao mòn tự nhiên theo thời gian: Má phanh, đĩa phanh, lốp xe, cầu chì, bộ xích, đĩa xích...
+  -> Đánh giá điểm truy xuất: 2/2 điểm (Target Docs: ['doi-tra-bao-hanh-shopee-seller', 'doi-tra-bao-hanh-lazada-seller', 'doi-tra-bao-hanh-tiki-seller'])
+  => Agent Output:
+Căn cứ theo tài liệu trích dẫn:
+   [1] (doi-tra-bao-hanh-shopee-seller): ## D. Chính sách bảo vệ Người Bán và Xử lý Gian lận
+   [2] (doi-tra-bao-hanh-shopee-seller): # Quy định giải quyết khiếu nại Trả hàng và Hoàn tiền dành cho Người Bán trên Shopee
+   [3] (doi-tra-bao-hanh-tiki-seller): - **Đồng ý Đổi mới**: Tiki tạo đơn đổi trả mới, Nhà Bán tiến hành chuẩn bị và giao hàng mới.
+
+----------------------------------------------------------------
+Query #3: Thời hạn bảo hành xe máy điện và Pin LFP VinFast là bao nhiêu năm?
+Filter: None
+Gold Answer: Bảo hành xe là 6 năm/không giới hạn km; thời hạn bảo hành pin LFP lên tới 8 năm.
+  [TRUY XUẤT CÓ FILTER]:
+    Top-1 [Score: 0.2524 | Doc: doi-tra-bao-hanh-sunhouse-buyer | ID: doi-tra-bao-hanh-sunhouse-buyer#6]: - **Sản phẩm bàn chải điện / tăm nước**: Đổi mới trong 1 - 12 tháng nếu có lỗi kỹ thuật từ nhà sản xuất.  ---  ## 4. Phư...
+    Top-2 [Score: 0.2495 | Doc: doi-tra-bao-hanh-lazada-seller | ID: doi-tra-bao-hanh-lazada-seller#0]: # Quy trình xử lý đơn hàng và khiếu nại Trả hàng/Hoàn tiền dành cho Nhà Bán Hàng - Lazada...
+    Top-3 [Score: 0.2267 | Doc: doi-tra-bao-hanh-samsung-buyer | ID: doi-tra-bao-hanh-samsung-buyer#0]: # Chính sách bảo hành sản phẩm chính hãng Samsung dành cho Khách hàng  ## 1. Điều kiện áp dụng bảo hành Sản phẩm mang nh...
+  -> Đánh giá điểm truy xuất: 0/2 điểm (Target Docs: ['doi-tra-bao-hanh-vinfast-buyer'])
+  => Agent Output:
+Căn cứ theo tài liệu trích dẫn:
+   [1] (doi-tra-bao-hanh-sunhouse-buyer): - **Sản phẩm bàn chải điện / tăm nước**: Đổi mới trong 1 - 12 tháng nếu có lỗi kỹ thuật từ nhà sản xuất.
+   [2] (doi-tra-bao-hanh-lazada-seller): # Quy trình xử lý đơn hàng và khiếu nại Trả hàng/Hoàn tiền dành cho Nhà Bán Hàng - Lazada
+   [3] (doi-tra-bao-hanh-samsung-buyer): # Chính sách bảo hành sản phẩm chính hãng Samsung dành cho Khách hàng
+
+----------------------------------------------------------------
+Query #4: Các trường hợp nào thiết bị di động bị từ chối bảo hành hoặc bị trừ phí khi đổi trả?
+Filter: None
+Gold Answer: Từ chối khi tự ý tháo mở sửa chữa, rơi vỡ ngập nước; bị trừ 10-20% phí nếu trả máy không lỗi hoặc mất hộp/phụ kiện.
+  [TRUY XUẤT CÓ FILTER]:
+    Top-1 [Score: 0.3256 | Doc: doi-tra-bao-hanh-tgdd-buyer | ID: doi-tra-bao-hanh-tgdd-buyer#2]: - Nếu TGDĐ vi phạm cam kết (bảo hành quá 15 ngày hoặc phải bảo hành lại lần 2 trong 30 ngày), Khách hàng được áp dụng ch...
+    Top-2 [Score: 0.2414 | Doc: doi-tra-bao-hanh-cellphones-buyer | ID: doi-tra-bao-hanh-cellphones-buyer#2]: | **Smartwatch khác** (trừ Apple & Samsung) | **15 ngày** | - Trong 15 ngày đầu: Trừ phí 30% trên giá hiện tại.<br>- Sau...
+    Top-3 [Score: 0.2388 | Doc: doi-tra-bao-hanh-sunhouse-buyer | ID: doi-tra-bao-hanh-sunhouse-buyer#6]: - **Sản phẩm bàn chải điện / tăm nước**: Đổi mới trong 1 - 12 tháng nếu có lỗi kỹ thuật từ nhà sản xuất.  ---  ## 4. Phư...
+  -> Đánh giá điểm truy xuất: 2/2 điểm (Target Docs: ['doi-tra-bao-hanh-tgdd-buyer', 'doi-tra-bao-hanh-cellphones-buyer'])
+  => Agent Output:
+Căn cứ theo tài liệu trích dẫn:
+   [1] (doi-tra-bao-hanh-tgdd-buyer): - Nếu TGDĐ vi phạm cam kết (bảo hành quá 15 ngày hoặc phải bảo hành lại lần 2 trong 30 ngày), Khách hàng được áp dụng chính sách "Hư gì đổi nấy" ngay lập tức hoặc Hoàn tiền với mức phí giảm 50%.
+   [2] (doi-tra-bao-hanh-cellphones-buyer): | **Smartwatch khác** (trừ Apple & Samsung) | **15 ngày** | - Trong 15 ngày đầu: Trừ phí 30% trên giá hiện tại.<br>- Sau 15 ngày: Nhập lại theo thỏa thuận. |
+   [3] (doi-tra-bao-hanh-sunhouse-buyer): - **Sản phẩm bàn chải điện / tăm nước**: Đổi mới trong 1 - 12 tháng nếu có lỗi kỹ thuật từ nhà sản xuất.
+
+----------------------------------------------------------------
+Query #5: Người bán cần chuẩn bị những bằng chứng gì khi khiếu nại đơn hàng bị trả về không nguyên vẹn?
+Filter: {'audience': 'seller'}
+Gold Answer: Video mở kiện hàng có sự hiện diện của shipper, quay rõ 6 mặt kiện hàng nguyên vẹn và tình trạng sản phẩm bên trong.
+  [TRUY XUẤT CÓ FILTER]:
+    Top-1 [Score: 0.1420 | Doc: doi-tra-bao-hanh-lazada-seller | ID: doi-tra-bao-hanh-lazada-seller#1]: ## 1. Quản lý trạng thái đơn hàng trên Lazada Seller Center Nhà bán hàng kiểm tra và theo dõi đơn hàng tại mục **"Đơn hà...
+    Top-2 [Score: 0.1294 | Doc: doi-tra-bao-hanh-tiki-seller | ID: doi-tra-bao-hanh-tiki-seller#3]: ## 2. Quy trình 4 bước xử lý khiếu nại Đổi trả/Bảo hành 1. **Tiếp nhận khiếu nại**: Tiki tiếp nhận yêu cầu từ Người mua,...
+    Top-3 [Score: 0.1220 | Doc: doi-tra-bao-hanh-shopee-seller | ID: doi-tra-bao-hanh-shopee-seller#5]: ## D. Chính sách bảo vệ Người Bán và Xử lý Gian lận  ### 1. Cơ chế bảo vệ Người Bán - Tất cả các yêu cầu Trả hàng/Hoàn t...
+  [SO SÁNH A/B - TRUY XUẤT KHÔNG FILTER]:
+    Top-1 [Score: 0.2549 | Doc: doi-tra-bao-hanh-cellphones-buyer | ID: doi-tra-bao-hanh-cellphones-buyer#8]: - **Lưu ý dữ liệu**: Khách hàng chủ động sao lưu dữ liệu cá nhân. Cửa hàng không chịu trách nhiệm về...
+    Top-2 [Score: 0.1622 | Doc: doi-tra-bao-hanh-cellphones-buyer | ID: doi-tra-bao-hanh-cellphones-buyer#1]: | Loại sản phẩm | Thời hạn Đổi mới miễn phí (*) | Quy định Nhập lại / Trả lại sản phẩm | | :--- | :-...
+    Top-3 [Score: 0.1545 | Doc: doi-tra-bao-hanh-lazada-buyer | ID: doi-tra-bao-hanh-lazada-buyer#2]: ## 2. Các hình thức bảo hành trên Lazada - **Bảo hành bằng Hóa đơn mua hàng**: Áp dụng hóa đơn/biên ...
+  -> Đánh giá điểm truy xuất: 2/2 điểm (Target Docs: ['doi-tra-bao-hanh-shopee-seller', 'doi-tra-bao-hanh-lazada-seller', 'doi-tra-bao-hanh-tiki-seller'])
+  => Agent Output:
+Căn cứ theo tài liệu trích dẫn:
+   [1] (doi-tra-bao-hanh-lazada-seller): ## 1. Quản lý trạng thái đơn hàng trên Lazada Seller Center
+   [2] (doi-tra-bao-hanh-tiki-seller): ## 2. Quy trình 4 bước xử lý khiếu nại Đổi trả/Bảo hành
+   [3] (doi-tra-bao-hanh-shopee-seller): ## D. Chính sách bảo vệ Người Bán và Xử lý Gian lận
+
+================================================================
+TỔNG ĐIỂM BENCHMARK RETRIEVAL: 8/10 điểm
+================================================================
